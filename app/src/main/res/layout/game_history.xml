@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/tangarine"
+    android:orientation="horizontal"
+    android:weightSum="2">
+
+    <TextView
+        android:id="@+id/playerName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/darkNavy"
+        android:drawableStart="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/playerPoints"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/darkNavy" />
+</LinearLayout>

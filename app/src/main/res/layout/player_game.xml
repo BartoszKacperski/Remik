@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="player"
+            type="com.rolnik.remik.model.PlayerWithPoints" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:cardBackgroundColor="@color/blueberry">
+
+        <LinearLayout
+            android:id="@+id/root"
+            android:layout_width="125dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:textSize="18sp"
+                android:text="@{player.player.nickname}"
+                android:textColor="@color/tangarine"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:textColor="@color/tangarine"
+                android:textSize="20sp"
+                app:bindPoints="@{player.currentPoints}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/tangarine"/>
+
+
+            <ImageButton
+                android:id="@+id/expand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                app:srcCompat="@android:drawable/arrow_down_float"
+                android:background="@color/blueberry"
+                android:tint="@color/tangarine"
+                android:contentDescription="@string/expand" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/points"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/darkNavy"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/point" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

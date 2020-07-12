@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="playersWithPoints"
+            type="com.rolnik.remik.model.PlayerWithPoints" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/blueberry"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <include
+            android:id="@+id/player"
+            layout="@layout/player_nickname"
+            bind:player="@{playersWithPoints.player}" />
+
+        <EditText
+            android:id="@+id/playerPoints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:hint="@string/points"
+            android:inputType="number"
+            tools:ignore="Autofill" />
+
+        <CheckBox
+            android:id="@+id/win"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/win"
+            android:drawablePadding="4dp" />
+
+        <Button
+            android:id="@+id/continueButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:background="@android:color/transparent"
+            android:text="@string/move_on"
+            android:textColor="@color/tangarine" />
+    </LinearLayout>
+</layout>

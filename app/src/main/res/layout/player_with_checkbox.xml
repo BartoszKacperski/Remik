@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="playerWithChoice"
+            type="com.rolnik.remik.model.PlayerWithChoice" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/blueberry"
+        android:orientation="horizontal"
+        android:layout_margin="4dp"
+        android:padding="4dp">
+
+        <include
+            android:id="@+id/player"
+            layout="@layout/player_nickname"
+            bind:player="@{playerWithChoice.player}"/>
+
+        <CheckBox
+            android:id="@+id/playerCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:checked="@={playerWithChoice.checked}"/>
+    </LinearLayout>
+</layout>

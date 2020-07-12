@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="player"
+            type="com.rolnik.remik.model.Player" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="@color/blueberry">
+
+        <include
+            layout="@layout/player_image" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="@string/player_nickname"
+            android:text="@={player.nickname}"
+            android:inputType="text"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:hint="@string/player_first_name"
+            android:text="@={player.firstName}"
+            android:inputType="text"
+            tools:ignore="Autofill" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:background="@android:color/transparent"
+                android:text="@string/cancel"
+                android:textColor="@color/tangarine" />
+
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:background="@android:color/transparent"
+                android:text="@string/add"
+                android:textColor="@color/tangarine" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

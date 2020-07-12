@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="player"
+            type="com.rolnik.remik.model.PlayerWithPoints" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tangarine"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@{player.player.firstName}"
+            android:textAlignment="center"
+            android:textColor="@color/blueberry"
+            android:drawableStart="@drawable/avatar" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:textAlignment="center"
+            android:textColor="@color/blueberry"
+            app:bindPoints="@{player.currentPoints}" />
+    </LinearLayout>
+</layout>

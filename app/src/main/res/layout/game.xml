@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.rolnik.remik.databinding.DataBindingConverters" />
+
+        <variable
+            name="game"
+            type="com.rolnik.remik.model.Game" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@color/darkNavy">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:drawableBottom="@android:drawable/arrow_down_float"
+                    android:drawablePadding="4dp"
+                    android:drawableTint="@color/tangarine"
+                    android:padding="8dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/tangarine"
+                    app:bindDate="@{game.localDate}" />
+
+                <ImageButton
+                    android:id="@+id/delete"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    app:srcCompat="@android:drawable/ic_delete"
+                    android:background="@android:color/transparent"
+                    android:tint="@color/tangarine"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gameHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

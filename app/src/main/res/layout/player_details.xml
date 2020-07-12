@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="playerDetails"
+            type="com.rolnik.remik.model.PlayerWithGameHistory" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@color/blueberry">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <FrameLayout
+                android:id="@+id/sceneRoot"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <include
+                    layout="@layout/player_image" />
+            </FrameLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:drawableStart="@drawable/nickname"
+                android:drawablePadding="8dp"
+                android:text="@{playerDetails.player.nickname}"
+                android:textColor="@color/tangarine"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:drawableStart="@drawable/first_name"
+                android:drawablePadding="8dp"
+                android:text="@{playerDetails.player.firstName}"
+                android:textColor="@color/tangarine"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:drawableStart="@drawable/points"
+                android:drawablePadding="8dp"
+                app:bindPoints="@{playerDetails}"
+                android:textColor="@color/tangarine"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

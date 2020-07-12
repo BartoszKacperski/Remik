@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/darkNavy">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/choose_player"
+        android:textColor="@color/tangarine"
+        android:textSize="24sp"
+        android:layout_margin="4dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/playersToChoose"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:layout_margin="8dp"
+        android:layout_gravity="center"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:background="@android:color/transparent"
+            android:text="@string/cancel"
+            android:textColor="@color/tangarine" />
+
+        <Button
+            android:id="@+id/okButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:background="@android:color/transparent"
+            android:text="@string/ok"
+            android:textColor="@color/tangarine" />
+    </LinearLayout>
+</LinearLayout>

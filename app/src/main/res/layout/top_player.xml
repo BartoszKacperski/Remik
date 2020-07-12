@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:chart="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="playerDetails"
+            type="com.rolnik.remik.model.PlayerWithGameHistory" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@color/blueberry">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="4dp"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:contentDescription="@string/player"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/users"
+                    android:background="@drawable/circle_button"
+                    android:backgroundTint="@color/darkNavy"
+                    android:tint="@color/tangarine"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@{playerDetails.player.nickname}"
+                    android:textColor="@color/darkNavy" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bindPoints="@{playerDetails}"
+                    android:layout_margin="4dp"
+                    android:drawableStart="@drawable/points"
+                    android:drawablePadding="4dp"
+                    android:textColor="@color/darkNavy"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bindGamesAmount="@{playerDetails}"
+                    android:layout_margin="4dp"
+                    android:textColor="@color/darkNavy"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bindAvgPoints="@{playerDetails}"
+                    android:layout_margin="4dp"
+                    android:textColor="@color/darkNavy"/>
+            </LinearLayout>
+
+            <com.db.chart.view.LineChartView
+                android:id="@+id/chart"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

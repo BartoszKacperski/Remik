@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "402265227213",
+    "firebase_url": "https://remik-963e5.firebaseio.com",
+    "project_id": "remik-963e5",
+    "storage_bucket": "remik-963e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402265227213:android:a32e119e0e5c11a714ce84",
+        "android_client_info": {
+          "package_name": "com.rolnik.remik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402265227213-05oq6tshnvn7p6a7jt1ef89t201q27j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB51Kk1Q2jZ-J50FGtknWWqseVzLKVDqls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402265227213-05oq6tshnvn7p6a7jt1ef89t201q27j0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

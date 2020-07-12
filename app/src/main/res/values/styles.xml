@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/blueberry</item>
+        <item name="colorPrimaryDark">@color/darkNavy</item>
+        <item name="colorAccent">@color/tangarine</item>
+    </style>
+
+    <style name="HighlightedButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/darkNavy</item>
+        <item name="colorButtonNormal">@color/blueberry</item>
+    </style>
+
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+</resources>
