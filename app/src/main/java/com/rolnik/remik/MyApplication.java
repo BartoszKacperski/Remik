@@ -3,17 +3,18 @@ package com.rolnik.remik;
 import android.app.Application;
 
 import com.rolnik.remik.components.DaggerFragmentComponent;
-import com.rolnik.remik.components.DaggerServiceComponent;
 import com.rolnik.remik.components.FragmentComponent;
-import com.rolnik.remik.components.ServiceComponent;
 import com.rolnik.remik.modules.DaosModule;
 import com.rolnik.remik.modules.DatabaseModule;
 import com.rolnik.remik.modules.RepositoriesModule;
+import com.rolnik.remik.modules.RestDaoModule;
+import com.rolnik.remik.modules.RetrofitModule;
+import com.rolnik.remik.modules.SchedulersModule;
+import com.rolnik.remik.modules.ServiceModule;
 
 public class MyApplication extends Application {
     private static MyApplication myApplication;
     private FragmentComponent fragmentComponent;
-    private ServiceComponent serviceComponent;
 
     @Override
     public void onCreate() {
@@ -23,13 +24,12 @@ public class MyApplication extends Application {
                 .databaseModule(new DatabaseModule(getApplicationContext()))
                 .daosModule(new DaosModule())
                 .repositoriesModule(new RepositoriesModule())
+                .retrofitModule(new RetrofitModule(this))
+                .restDaoModule(new RestDaoModule())
+                .schedulersModule(new SchedulersModule())
+                .serviceModule(new ServiceModule())
                 .build();
 
-        serviceComponent = DaggerServiceComponent.builder()
-                .databaseModule(new DatabaseModule(getApplicationContext()))
-                .daosModule(new DaosModule())
-                .repositoriesModule(new RepositoriesModule())
-                .build();
     }
 
     public static MyApplication app(){
@@ -38,9 +38,5 @@ public class MyApplication extends Application {
 
     public FragmentComponent databaseComponent(){
         return fragmentComponent;
-    }
-
-    public ServiceComponent getServiceComponent() {
-        return serviceComponent;
     }
 }

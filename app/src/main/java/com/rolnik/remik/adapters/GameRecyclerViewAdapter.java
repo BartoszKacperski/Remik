@@ -24,9 +24,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
 
 public class GameRecyclerViewAdapter extends RecyclerView.Adapter<GameViewHolder> {
     private final Context context;
@@ -34,6 +31,13 @@ public class GameRecyclerViewAdapter extends RecyclerView.Adapter<GameViewHolder
     private final List<PlayerWithGameHistory> players;
     private final OnGameDeleteButtonClicked buttonClicked;
     private final List<Integer> clickedPositions = new ArrayList<>();
+
+    public GameRecyclerViewAdapter(Context context, List<Game> games, List<PlayerWithGameHistory> players, OnGameDeleteButtonClicked buttonClicked) {
+        this.context = context;
+        this.games = games;
+        this.players = players;
+        this.buttonClicked = buttonClicked;
+    }
 
     @NonNull
     @Override

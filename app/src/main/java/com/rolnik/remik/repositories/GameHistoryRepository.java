@@ -7,13 +7,14 @@ import java.util.List;
 
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 
 public class GameHistoryRepository {
     private final GameHistoryDao gameHistoryDao;
 
+    public GameHistoryRepository(GameHistoryDao gameHistoryDao) {
+        this.gameHistoryDao = gameHistoryDao;
+    }
 
     Maybe<Long> insert(final GameHistory gameHistory){
         return gameHistoryDao.insert(gameHistory);

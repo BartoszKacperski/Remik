@@ -10,21 +10,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rolnik.remik.R;
 import com.rolnik.remik.databinding.PlayerGameBinding;
-import com.rolnik.remik.model.Player;
 import com.rolnik.remik.model.PlayerWithPoints;
 import com.rolnik.remik.utils.OnItemClicked;
 import com.rolnik.remik.viewholders.PlayerGameViewHolder;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
 
 public class PlayerGameRecyclerViewAdapter extends RecyclerView.Adapter<PlayerGameViewHolder> {
     private final List<PlayerWithPoints> playerWithPoints;
     private final Context context;
     private final OnItemClicked onItemClicked;
+
+    public PlayerGameRecyclerViewAdapter(List<PlayerWithPoints> playerWithPoints, Context context, OnItemClicked onItemClicked) {
+        this.playerWithPoints = playerWithPoints;
+        this.context = context;
+        this.onItemClicked = onItemClicked;
+    }
 
     @NonNull
     @Override

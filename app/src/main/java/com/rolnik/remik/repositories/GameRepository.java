@@ -9,13 +9,15 @@ import java.util.List;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+
 
 public class GameRepository {
     private final GameDao gameDao;
 
+    public GameRepository(GameDao gameDao) {
+        this.gameDao = gameDao;
+    }
 
     Maybe<Long> insert(final Game game){
         return gameDao.insert(game);

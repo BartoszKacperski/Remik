@@ -4,15 +4,7 @@ import androidx.room.Embedded;
 import androidx.room.Relation;
 
 import java.util.List;
-import java.util.Set;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 
 public class PlayerWithGameHistory {
     @Embedded
@@ -20,4 +12,20 @@ public class PlayerWithGameHistory {
 
     @Relation(parentColumn = "id", entityColumn = "playerId", entity = GameHistory.class)
     List<GameHistory> gameHistories;
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public List<GameHistory> getGameHistories() {
+        return gameHistories;
+    }
+
+    public void setGameHistories(List<GameHistory> gameHistories) {
+        this.gameHistories = gameHistories;
+    }
 }

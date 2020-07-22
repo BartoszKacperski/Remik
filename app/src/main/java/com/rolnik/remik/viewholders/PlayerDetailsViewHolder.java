@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rolnik.remik.R;
 import com.rolnik.remik.databinding.PlayerDetailsBinding;
+import com.rolnik.remik.model.Player;
 import com.rolnik.remik.model.PlayerWithGameHistory;
 import com.rolnik.remik.utils.OnItemClicked;
 
@@ -48,7 +49,7 @@ public class PlayerDetailsViewHolder extends RecyclerView.ViewHolder {
 
 
 
-    public void bind(final PlayerWithGameHistory playerWithGameHistory){
-        binding.setPlayerDetails(playerWithGameHistory);
+    public void bind(final Player player){
+        binding.setPlayer(player);
     }
 }

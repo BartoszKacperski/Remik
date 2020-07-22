@@ -9,12 +9,6 @@ import com.rolnik.remik.BR;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
-
 @Entity(tableName = "games")
 public class Game extends BaseObservable {
     @PrimaryKey(autoGenerate = true)

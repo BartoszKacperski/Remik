@@ -2,7 +2,6 @@ package com.rolnik.remik.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,19 +10,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rolnik.remik.R;
 import com.rolnik.remik.databinding.PlayerWithCheckboxBinding;
-import com.rolnik.remik.model.Player;
 import com.rolnik.remik.model.PlayerWithChoice;
 import com.rolnik.remik.viewholders.PlayerWithCheckBoxViewHolder;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
-
 public class PlayerChooseRecyclerViewAdapter extends RecyclerView.Adapter<PlayerWithCheckBoxViewHolder> {
     private final Context context;
     private final List<PlayerWithChoice> players;
+
+    public PlayerChooseRecyclerViewAdapter(Context context, List<PlayerWithChoice> players) {
+        this.context = context;
+        this.players = players;
+    }
 
     @NonNull
     @Override

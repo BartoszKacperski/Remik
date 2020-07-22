@@ -8,13 +8,6 @@ import androidx.room.PrimaryKey;
 
 import com.rolnik.remik.BR;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 
 @Entity(tableName = "players",
         indices = {@Index(value = "nickname", unique = true)})
@@ -23,6 +16,15 @@ public class Player extends BaseObservable {
     private long id;
     private String nickname;
     private String firstName;
+
+    public Player() {
+    }
+
+    public Player(long id, String nickname, String firstName) {
+        this.id = id;
+        this.nickname = nickname;
+        this.firstName = firstName;
+    }
 
     public long getId() {
         return id;

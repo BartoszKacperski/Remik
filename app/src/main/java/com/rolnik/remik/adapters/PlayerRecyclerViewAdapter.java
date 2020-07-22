@@ -10,20 +10,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rolnik.remik.R;
 import com.rolnik.remik.databinding.PlayerDetailsBinding;
+import com.rolnik.remik.model.Player;
 import com.rolnik.remik.model.PlayerWithGameHistory;
 import com.rolnik.remik.utils.OnItemClicked;
 import com.rolnik.remik.viewholders.PlayerDetailsViewHolder;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+
 
 public class PlayerRecyclerViewAdapter extends RecyclerView.Adapter<PlayerDetailsViewHolder> {
-    private final List<PlayerWithGameHistory> playerWithGameHistories;
+    private final List<Player> players;
     private final Context context;
     private final OnItemClicked onItemClicked;
+
+    public PlayerRecyclerViewAdapter(List<Player> players, Context context, OnItemClicked onItemClicked) {
+        this.players = players;
+        this.context = context;
+        this.onItemClicked = onItemClicked;
+    }
 
     @NonNull
     @Override
@@ -37,24 +43,34 @@ public class PlayerRecyclerViewAdapter extends RecyclerView.Adapter<PlayerDetail
 
     @Override
     public void onBindViewHolder(@NonNull PlayerDetailsViewHolder holder, int position) {
-        PlayerWithGameHistory playerWithGameHistory = playerWithGameHistories.get(position);
+        Player player = players.get(position);
 
-        holder.bind(playerWithGameHistory);
+        holder.bind(player);
     }
 
     @Override
     public int getItemCount() {
-        return playerWithGameHistories.size();
+        return players.size();
     }
 
-    public void setPlayerWithGameHistories(List<PlayerWithGameHistory> playerWithGameHistories){
-        this.playerWithGameHistories.clear();
-        this.playerWithGameHistories.addAll(playerWithGameHistories);
+    public void setPlayerWithGameHistories(List<Player> players){
+        this.players.clear();
+        this.players.addAll(players);
         notifyDataSetChanged();
     }
 
-    public PlayerWithGameHistory getPlayer(int position){
-        return playerWithGameHistories.get(position);
+    public Player getPlayer(int position){
+        return players.get(position);
+    }
+
+    public void add(final Player player) {
+        this.players.add(player);
+        notifyItemInserted(players.size() - 1);
+    }
+
+    public void remove (int position) {
+        this.players.remove(position);
+        notifyItemRemoved(position);
     }
 
 }

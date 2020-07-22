@@ -5,19 +5,16 @@ import com.annimon.stream.Stream;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 
 public class CurrentGame {
     public static final int WIN_POINTS = -50;
 
     private List<PlayerWithPoints> players;
     private long gameId;
+
+    public CurrentGame() {
+    }
 
     public CurrentGame(List<Player> players){
         this.players = Stream.of(players).map(PlayerWithPoints::new).toList();
@@ -51,5 +48,17 @@ public class CurrentGame {
         gameHistory.setGameId(gameId);
 
         return gameHistory;
+    }
+
+    public List<PlayerWithPoints> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<PlayerWithPoints> players) {
+        this.players = players;
+    }
+
+    public long getGameId() {
+        return gameId;
     }
 }

@@ -18,8 +18,7 @@ import com.rolnik.remik.R;
 import com.rolnik.remik.adapters.PlayerRecyclerViewAdapter;
 import com.rolnik.remik.dialogs.AddPlayerDialog;
 import com.rolnik.remik.model.Player;
-import com.rolnik.remik.model.PlayerWithGameHistory;
-import com.rolnik.remik.repositories.PlayerRepository;
+import com.rolnik.remik.services.PlayerService;
 import com.rolnik.remik.utils.OnItemClicked;
 
 import java.util.ArrayList;
@@ -40,7 +39,7 @@ public class PlayerFragments extends Fragment {
     RecyclerView players;
 
     @Inject
-    PlayerRepository playerRepository;
+    PlayerService playerService;
 
     private CompositeDisposable compositeDisposable;
     private AddPlayerDialog addPlayerDialog;
@@ -85,16 +84,15 @@ public class PlayerFragments extends Fragment {
     };
 
     private void insertPlayer(final Player player) {
-        compositeDisposable.add(playerRepository.insert(player)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(
-                        l -> insertPlayerSuccessFull(),
-                        this::insertPlayerFailed
-                ));
+        compositeDisposable.add(playerService.create(player).subscribe(
+                this::insertPlayerSuccess,
+                this::insertPlayerFailed
+        ));
     }
 
-    private void insertPlayerSuccessFull() {
+    private void insertPlayerSuccess(final Player player) {
         showToast(R.string.add_player_successfull);
+        playersAdapter.add(player);
     }
 
     private void insertPlayerFailed(Throwable e) {
@@ -110,9 +108,9 @@ public class PlayerFragments extends Fragment {
     }
 
     private OnItemClicked onItemClicked = p -> {
-        PlayerWithGameHistory playerWithGameHistory = playersAdapter.getPlayer(p);
+        Player player = playersAdapter.getPlayer(p);
 
-        deletePlayer(playerWithGameHistory.getPlayer());
+        deletePlayer(player, p);
     };
 
     private void setUpPlayerRecyclerView() {
@@ -126,22 +124,18 @@ public class PlayerFragments extends Fragment {
 
     private void loadPlayers() {
         compositeDisposable.add(
-                playerRepository.getAllWithGameHistory()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
+                playerService.getAll()
                         .subscribe(
                                 this::fillPlayerChooserAdapter,
                                 e -> loadPlayersFailed()
                         ));
     }
 
-    private void deletePlayer(Player player) {
+    private void deletePlayer(Player player, int position) {
         compositeDisposable.add(
-                playerRepository.delete(player)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
+                playerService.delete(player)
                         .subscribe(
-                                () -> { },
+                                () -> deletePlayerSuccess(position),
                                 e -> deletePlayerFailed()
                         )
         );
@@ -151,12 +145,16 @@ public class PlayerFragments extends Fragment {
         showToast(R.string.remove_player_failed);
     }
 
+    private void deletePlayerSuccess(int position) {
+        playersAdapter.remove(position);
+    }
+
     private void loadPlayersFailed() {
         showToast(R.string.load_player_failed);
     }
 
-    private void fillPlayerChooserAdapter(final List<PlayerWithGameHistory> playerWithGameHistories) {
-        playersAdapter.setPlayerWithGameHistories(playerWithGameHistories);
+    private void fillPlayerChooserAdapter(final List<Player> players) {
+        playersAdapter.setPlayerWithGameHistories(players);
     }
 
     @Override

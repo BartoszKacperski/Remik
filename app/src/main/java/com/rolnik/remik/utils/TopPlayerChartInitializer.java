@@ -14,13 +14,17 @@ import com.rolnik.remik.model.GameHistory;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+
 
 public class TopPlayerChartInitializer {
     private final Context context;
     private final LineChartView lineChartView;
+
+    public TopPlayerChartInitializer(Context context, LineChartView lineChartView) {
+        this.context = context;
+        this.lineChartView = lineChartView;
+    }
 
     public void init(final List<GameHistory> gameHistories){
         if(!gameHistories.isEmpty()){

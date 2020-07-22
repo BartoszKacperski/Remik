@@ -5,15 +5,17 @@ import androidx.databinding.Bindable;
 
 import com.rolnik.remik.BR;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
-
 public class PlayerWithChoice extends BaseObservable {
     private Player player;
     private boolean isChecked;
+
+    public PlayerWithChoice(Player player, boolean isChecked) {
+        this.player = player;
+        this.isChecked = isChecked;
+    }
+
+    public PlayerWithChoice() {
+    }
 
     @Bindable
     public boolean isChecked() {

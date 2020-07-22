@@ -9,13 +9,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 
 public class PlayerPointsSpeechService {
     private final List<PlayerWithPoints> playerWithPoints;
 
+    public PlayerPointsSpeechService(List<PlayerWithPoints> playerWithPoints) {
+        this.playerWithPoints = playerWithPoints;
+    }
 
     public void addPlayersPoints(final List<String> speech){
         HashMap<PlayerWithPoints, String> playersText = divideSpeechBetweenPlayers(speech);

@@ -15,13 +15,15 @@ import com.rolnik.remik.viewholders.GameResultViewHolder;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
 
 public class GameResultRecyclerViewAdapter extends RecyclerView.Adapter<GameResultViewHolder> {
     private final Context context;
     private final List<PlayerWithPoints> playerWithPointsList;
+
+    public GameResultRecyclerViewAdapter(Context context, List<PlayerWithPoints> playerWithPointsList) {
+        this.context = context;
+        this.playerWithPointsList = playerWithPointsList;
+    }
 
     @NonNull
     @Override

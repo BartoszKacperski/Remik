@@ -4,8 +4,8 @@
     <data>
 
         <variable
-            name="playerDetails"
-            type="com.rolnik.remik.model.PlayerWithGameHistory" />
+            name="player"
+            type="com.rolnik.remik.model.Player" />
     </data>
 
     <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -36,7 +36,7 @@
                 android:layout_marginBottom="8dp"
                 android:drawableStart="@drawable/nickname"
                 android:drawablePadding="8dp"
-                android:text="@{playerDetails.player.nickname}"
+                android:text="@{player.nickname}"
                 android:textColor="@color/tangarine"/>
 
             <TextView
@@ -45,16 +45,7 @@
                 android:layout_marginBottom="8dp"
                 android:drawableStart="@drawable/first_name"
                 android:drawablePadding="8dp"
-                android:text="@{playerDetails.player.firstName}"
-                android:textColor="@color/tangarine"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:drawableStart="@drawable/points"
-                android:drawablePadding="8dp"
-                app:bindPoints="@{playerDetails}"
+                android:text="@{player.firstName}"
                 android:textColor="@color/tangarine"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

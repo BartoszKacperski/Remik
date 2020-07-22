@@ -11,13 +11,16 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+
 
 @Module
 public class DatabaseModule {
     private final Context context;
+
+    public DatabaseModule(Context context) {
+        this.context = context;
+    }
 
     @Provides
     @Singleton
